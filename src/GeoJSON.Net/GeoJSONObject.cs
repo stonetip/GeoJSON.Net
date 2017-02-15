@@ -10,7 +10,6 @@
 using System.Linq;
 using System.Runtime.Serialization;
 using GeoJSON.Net.Converters;
-using GeoJSON.Net.CoordinateReferenceSystem;
 using GeoJSON.Net.Geometry;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
@@ -29,7 +28,7 @@ namespace GeoJSON.Net
 
         protected GeoJSONObject()
         {
-            CRS = DefaultCRS.Instance;
+           
         }
 
         /// <summary>
@@ -47,21 +46,7 @@ namespace GeoJSON.Net
         [JsonProperty(PropertyName = "bbox", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public double[] BoundingBoxes { get; set; }
 
-        /// <summary>
-        ///     Gets or sets the (optional)
-        ///     <see cref="http://geojson.org/geojson-spec.html#coordinate-reference-system-objects">
-        ///         Coordinate Reference System
-        ///         Object.
-        ///     </see>
-        /// </summary>
-        /// <value>
-        ///     The Coordinate Reference System Objects.
-        /// </value>
-        [JsonProperty(PropertyName = "crs", Required = Required.Default, DefaultValueHandling = DefaultValueHandling.IgnoreAndPopulate,
-            NullValueHandling = NullValueHandling.Include)]
-        [JsonConverter(typeof(CrsConverter))]
-        //[DefaultValue(typeof(DefaultCRS), "")]
-        public ICRSObject CRS { get; set; }
+
 
         /// <summary>
         ///     Gets the (mandatory) type of the
@@ -81,10 +66,7 @@ namespace GeoJSON.Net
         [OnDeserialized]
         private void OnDeserialized(StreamingContext streamingContext)
         {
-            if (CRS == null)
-            {
-                CRS = DefaultCRS.Instance;
-            }
+
         }
 
         /// <summary>
@@ -94,10 +76,7 @@ namespace GeoJSON.Net
         [OnSerialized]
         private void OnSerialized(StreamingContext streamingContext)
         {
-            if (CRS == null)
-            {
-                CRS = DefaultCRS.Instance;
-            }
+
         }
 
         /// <summary>
@@ -107,10 +86,7 @@ namespace GeoJSON.Net
         [OnSerializing]
         private void OnSerializing(StreamingContext streamingContext)
         {
-            if (CRS is DefaultCRS)
-            {
-                CRS = null;
-            }
+
         }
 
         #region IEqualityComparer, IEquatable
@@ -150,10 +126,6 @@ namespace GeoJSON.Net
                 return false;
             }
 
-            if (!Equals(left.CRS, right.CRS))
-            {
-                return false;
-            }
 
             var leftIsNull = ReferenceEquals(null, left.BoundingBoxes);
             var rightIsNull = ReferenceEquals(null, right.BoundingBoxes);

@@ -43,7 +43,6 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\CrsConverter.cs" />
     <Compile Include="Converters\GeoJsonConverter.cs" />
     <Compile Include="Converters\GeometryConverter.cs" />
     <Compile Include="Converters\MultiPointConverter.cs" />
@@ -51,13 +50,6 @@
     <Compile Include="Converters\PointConverter.cs" />
     <Compile Include="Converters\LineStringConverter.cs" />
     <Compile Include="Converters\PolygonConverter.cs" />
-    <Compile Include="CoordinateReferenceSystem\DefaultCRS.cs" />
-    <Compile Include="CoordinateReferenceSystem\LinkedCRS.cs" />
-    <Compile Include="CoordinateReferenceSystem\CRSBase.cs" />
-    <Compile Include="CoordinateReferenceSystem\CRSType.cs" />
-    <Compile Include="CoordinateReferenceSystem\ICRSObject.cs" />
-    <Compile Include="CoordinateReferenceSystem\NamedCRS.cs" />
-    <Compile Include="CoordinateReferenceSystem\UnspecifiedCRS.cs" />
     <Compile Include="DoubleTenDecimalPlaceComparer.cs" />
     <Compile Include="GeoJSONObject.cs" />
     <Compile Include="Geometry\GeometryCollection.cs" />

@@ -22,13 +22,7 @@ namespace GeoJSON.Net
         /// </value>
         GeoJSONObjectType Type { get; }
 
-        /// <summary>
-        /// Gets the (optional) <see cref="http://geojson.org/geojson-spec.html#coordinate-reference-system-objects">Coordinate Reference System Object</see>.
-        /// </summary>
-        /// <value>
-        /// The Coordinate Reference System Objects.
-        /// </value>
-        CoordinateReferenceSystem.ICRSObject CRS { get; }
+
 
         /// <summary>
         /// Gets or sets the (optional) <see cref="http://geojson.org/geojson-spec.html#coordinate-reference-system-objects">Bounding Boxes</see>.
