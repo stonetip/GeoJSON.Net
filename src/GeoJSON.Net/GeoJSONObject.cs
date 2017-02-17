@@ -7,14 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
-using GeoJSON.Net.Converters;
-using GeoJSON.Net.Geometry;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
-using System.Collections.Generic;
-using System;
 
 namespace GeoJSON.Net
 {
@@ -25,11 +23,6 @@ namespace GeoJSON.Net
     public abstract class GeoJSONObject : IGeoJSONObject, IEqualityComparer<GeoJSONObject>, IEquatable<GeoJSONObject>
     {
         internal static readonly DoubleTenDecimalPlaceComparer DoubleComparer = new DoubleTenDecimalPlaceComparer();
-
-        protected GeoJSONObject()
-        {
-           
-        }
 
         /// <summary>
         ///     Gets or sets the (optional)
@@ -45,7 +38,6 @@ namespace GeoJSON.Net
         /// </value>
         [JsonProperty(PropertyName = "bbox", Required = Required.Default, NullValueHandling = NullValueHandling.Ignore)]
         public double[] BoundingBoxes { get; set; }
-
 
 
         /// <summary>
@@ -66,33 +58,14 @@ namespace GeoJSON.Net
         [OnDeserialized]
         private void OnDeserialized(StreamingContext streamingContext)
         {
-
         }
 
-        /// <summary>
-        ///     Called when [serialized].
-        /// </summary>
-        /// <param name="streamingContext">The streaming context.</param>
-        [OnSerialized]
-        private void OnSerialized(StreamingContext streamingContext)
-        {
 
-        }
-
-        /// <summary>
-        ///     Called when [serializing].
-        /// </summary>
-        /// <param name="streamingContext">The streaming context.</param>
-        [OnSerializing]
-        private void OnSerializing(StreamingContext streamingContext)
-        {
-
-        }
 
         #region IEqualityComparer, IEquatable
 
         /// <summary>
-        /// Determines whether the specified object is equal to the current object
+        ///     Determines whether the specified object is equal to the current object
         /// </summary>
         public override bool Equals(object obj)
         {
@@ -100,7 +73,7 @@ namespace GeoJSON.Net
         }
 
         /// <summary>
-        /// Determines whether the specified object is equal to the current object
+        ///     Determines whether the specified object is equal to the current object
         /// </summary>
         public bool Equals(GeoJSONObject other)
         {
@@ -108,23 +81,17 @@ namespace GeoJSON.Net
         }
 
         /// <summary>
-        /// Determines whether the specified object instances are considered equal
+        ///     Determines whether the specified object instances are considered equal
         /// </summary>
         public bool Equals(GeoJSONObject left, GeoJSONObject right)
         {
             if (ReferenceEquals(left, right))
-            {
                 return true;
-            }
             if (ReferenceEquals(null, right))
-            {
                 return false;
-            }
 
             if (left.Type != right.Type)
-            {
                 return false;
-            }
 
 
             var leftIsNull = ReferenceEquals(null, left.BoundingBoxes);
@@ -132,31 +99,25 @@ namespace GeoJSON.Net
             var bothAreMissing = leftIsNull && rightIsNull;
 
             if (bothAreMissing || leftIsNull != rightIsNull)
-            {
                 return bothAreMissing;
-            }
 
             return left.BoundingBoxes.SequenceEqual(right.BoundingBoxes, DoubleComparer);
         }
 
         /// <summary>
-        /// Determines whether the specified object instances are considered equal
+        ///     Determines whether the specified object instances are considered equal
         /// </summary>
         public static bool operator ==(GeoJSONObject left, GeoJSONObject right)
         {
             if (ReferenceEquals(left, right))
-            {
                 return true;
-            }
             if (ReferenceEquals(null, right))
-            {
                 return false;
-            }
             return left.Equals(right);
         }
 
         /// <summary>
-        /// Determines whether the specified object instances are not considered equal
+        ///     Determines whether the specified object instances are not considered equal
         /// </summary>
         public static bool operator !=(GeoJSONObject left, GeoJSONObject right)
         {
@@ -164,15 +125,15 @@ namespace GeoJSON.Net
         }
 
         /// <summary>
-        /// Returns the hash code for this instance
+        ///     Returns the hash code for this instance
         /// </summary>
         public override int GetHashCode()
         {
-            return ((int)Type).GetHashCode();
+            return ((int) Type).GetHashCode();
         }
 
         /// <summary>
-        /// Returns the hash code for the specified object
+        ///     Returns the hash code for the specified object
         /// </summary>
         public int GetHashCode(GeoJSONObject obj)
         {
