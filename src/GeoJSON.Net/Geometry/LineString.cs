@@ -21,11 +21,11 @@ namespace GeoJSON.Net.Geometry
     [JsonObject(MemberSerialization.OptIn)]
     public class LineString : GeoJSONObject, IGeometryObject, IEqualityComparer<LineString>, IEquatable<LineString>
     {
-        [JsonConstructor]
-        protected internal LineString()
-            : base()
-        {
-        }
+        //[JsonConstructor]
+        //protected internal LineString()
+        //    : base()
+        //{
+        //}
 
         /// <summary>
         ///     Initializes a new instance of the <see cref="LineString" /> class.
@@ -50,6 +50,13 @@ namespace GeoJSON.Net.Geometry
 
             Coordinates = coordsList;
             Type = GeoJSONObjectType.LineString;
+        }
+
+        /// <summary>
+        ///     Initializes a new, empty instance of the <see cref="LineString" /> class.
+        /// </summary>
+        public LineString()
+        {
         }
 
         /// <summary>
