@@ -67,6 +67,13 @@ namespace GeoJSON.Net.Feature
         }
 
         /// <summary>
+        ///     Initializes a new, empty instance of the <see cref="Feature" /> class.
+        /// </summary>
+        public Feature()
+        {
+        }
+
+        /// <summary>
         ///     Gets or sets the geometry.
         /// </summary>
         /// <value>
@@ -88,7 +95,7 @@ namespace GeoJSON.Net.Feature
         /// </summary>
         /// <value>The properties.</value>
         [JsonProperty(PropertyName = "properties", Required = Required.AllowNull)]
-        public Dictionary<string, object> Properties { get; private set; }
+        public Dictionary<string, object> Properties { get; set; }
 
         #region IEqualityComparer, IEquatable
 
