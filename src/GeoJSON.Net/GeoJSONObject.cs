@@ -49,7 +49,7 @@ namespace GeoJSON.Net
         /// </value>
         [JsonProperty(PropertyName = "type", Required = Required.Always)]
         [JsonConverter(typeof(StringEnumConverter))]
-        public GeoJSONObjectType Type { get; internal set; }
+        public GeoJSONObjectType Type { get;  set; }
 
         /// <summary>
         ///     Called when [deserialized].
