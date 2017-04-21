@@ -108,7 +108,7 @@ namespace GeoJSON.Net.Geometry
         public double? Altitude
         {
             get { return Coordinates[2]; }
-            private set { Coordinates[2] = value; }
+	        set { Coordinates[2] = value; }
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace GeoJSON.Net.Geometry
         public double Latitude
         {
             get { return Coordinates[0].GetValueOrDefault(); }
-            private set { Coordinates[0] = value; }
+	        set { Coordinates[0] = value; }
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace GeoJSON.Net.Geometry
         public double Longitude
         {
             get { return Coordinates[1].GetValueOrDefault(); }
-            private set { Coordinates[1] = value; }
+	        set { Coordinates[1] = value; }
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace GeoJSON.Net.Geometry
         /// <value>
         ///     The coordinates.
         /// </value>
-        private double?[] Coordinates { get; set; }
+        public double?[] Coordinates { get; set; }
         
         /// <summary>
         ///     Returns a <see cref="System.String" /> that represents this instance.
