@@ -21,7 +21,7 @@ namespace GeoJSON.Net.Geometry
     public class Point : GeoJSONObject, IGeometryObject, IEqualityComparer<Point>, IEquatable<Point>
     {
         [JsonConstructor]
-        private Point()
+        public Point()
                 : base()
         {
         }
@@ -48,7 +48,7 @@ namespace GeoJSON.Net.Geometry
         /// <value>The Coordinates.</value>
         [JsonProperty(PropertyName = "coordinates", Required = Required.Always)]
         [JsonConverter(typeof(PointConverter))]
-        public IPosition Coordinates { get; private set; }
+        public IPosition Coordinates { get; set; }
 
         #region IEqualityComparer, IEquatable
 

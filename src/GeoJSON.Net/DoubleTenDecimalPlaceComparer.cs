@@ -11,6 +11,12 @@ namespace GeoJSON.Net
     /// </remarks>
     public class DoubleTenDecimalPlaceComparer : IEqualityComparer<double>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
         public bool Equals(double x, double y)
         {
             return Math.Abs(x - y) < 0.0000000001;
